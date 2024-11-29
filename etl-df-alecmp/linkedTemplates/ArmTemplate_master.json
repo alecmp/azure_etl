@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nome Data Factory",
+			"defaultValue": "etl-df-alecmp"
+		},
+		"AzureDataLakeStorageLinkedService_accountKey": {
+			"type": "secureString",
+			"metadata": "Stringa sicura per 'accountKey' di 'AzureDataLakeStorageLinkedService'"
+		},
+		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://etlstoragealecmp.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://etl-kv-alecmp.vault.azure.net/"
+		},
+		"SqlServerOnPremLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost"
+		},
+		"SqlServerOnPremLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks"
+		},
+		"SqlServerOnPremLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "alessandro"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI dell'account di archiviazione contenente i modelli di ARM collegati"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token di firma di accesso condiviso per l'account di archiviazione contenente i modelli di ARM collegati"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "etl-df-alecmp_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorageLinkedService_accountKey": {
+						"value": "[parameters('AzureDataLakeStorageLinkedService_accountKey')]"
+					},
+					"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorageLinkedService_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"SqlServerOnPremLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('SqlServerOnPremLinkedService_properties_typeProperties_server')]"
+					},
+					"SqlServerOnPremLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('SqlServerOnPremLinkedService_properties_typeProperties_database')]"
+					},
+					"SqlServerOnPremLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServerOnPremLinkedService_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
