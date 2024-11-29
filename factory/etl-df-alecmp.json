@@ -1,0 +1,9 @@
+{
+	"name": "etl-df-alecmp",
+	"location": "italynorth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8352178d-4eca-4632-a90c-a6938c6104ae",
+		"tenantId": "42abb9d5-3f16-4280-8ab5-acea8d0550bc"
+	}
+}
