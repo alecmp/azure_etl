@@ -6,7 +6,7 @@
 		"typeProperties": {
 			"server": "localhost",
 			"database": "AdventureWorks",
-			"encrypt": "mandatory",
+			"encrypt": "optional",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
 			"userName": "alessandro",
