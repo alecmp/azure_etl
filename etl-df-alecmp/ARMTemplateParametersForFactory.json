@@ -11,6 +11,9 @@
 		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
 			"value": "https://etlstoragealecmp.dfs.core.windows.net/"
 		},
+		"AzureDatabricksLinkedService_properties_typeProperties_existingClusterId": {
+			"value": "1129-214417-misjwk8v"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://etl-kv-alecmp.vault.azure.net/"
 		},
